@@ -21,7 +21,10 @@
     * Train the user to be productive by helping them identify their places for improvement.
   * __Tasks:__
     *(break goals down into tasks — what does the user need to do to accomplish a particular goal)*
-    * a
+    * Plan accordingly with their current schedule in order to find time to be productive
+    * Go to locations that maxamize their productivity in order to get work done
+    * Find a way to have less distractions when working in order to finish tasks
+    * Define goals for the day and focus on a few particular tasks rather then being overwhelmed by many differnet tasks
   * __Pain Points, Concerns, and Challenges:__
     *(what are they worried about? what do they have trouble with?)*
     * I have so much going on that I dont even know when im productive  I have problems structuring my day 
@@ -32,6 +35,8 @@
     * User creates an account
     * Gets data from google
     * Uploads data to website
+    * API parses Data and sends to database
     * Download App
+    * Initial setup
     * App will use previous locations user has spent time at and ask questions in regards to it
     * User will be able to see analysis

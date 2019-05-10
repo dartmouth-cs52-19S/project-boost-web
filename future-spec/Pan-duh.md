@@ -36,6 +36,8 @@
     * User creates an account
     * Gets data from google
     * Uploads data to website
+    * API parses Data and sends to database
     * Download App
+    * Initial setup
     * App will use previous locations user has spent time at and ask questions in regards to it
     * User will be able to see analysis

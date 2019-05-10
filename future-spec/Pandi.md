@@ -16,14 +16,14 @@
 ## Behavioral and Dimensional Information
   * __Goals and Motivations:__
     *(goals should directly relate to product/service)*
-    * Maximize productivity 
-    * Emotional Validation 
-    * Get a raise/ impress boss. 
+    * Maximize productivity
+    * Emotional Validation
+    * Get a raise/ impress boss
   * __Tasks:__
     *(break goals down into tasks — what does the user need to do to accomplish a particular goal)*
     * Understand the location the user is most productive at
     * Triage locations and pick the best one in order to maximize productivity
-    * 
+    * See what times they are most productive and utalize those times
   * __Pain Points, Concerns, and Challenges:__
     *(what are they worried about? what do they have trouble with?)*
     * I think I’m productive but I don’t even know. Can I do better? 
@@ -35,6 +35,8 @@
     * User creates an account
     * Gets data from google
     * Uploads data to website
+    * API parses Data and sends to database
     * Download App
+    * Initial setup
     * App will use previous locations user has spent time at and ask questions in regards to it
     * User will be able to see analysis
