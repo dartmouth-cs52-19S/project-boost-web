@@ -6,6 +6,7 @@ import React from 'react';
 import LandingPage from './landing-page/landing-page';
 import Nav from './navbar';
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class App extends React.Component {
   render() {
     return (
