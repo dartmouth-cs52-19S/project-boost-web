@@ -1,21 +1,27 @@
+
 import React from 'react';
 import '../style.scss';
 import {
-  BrowserRouter as Router, Route, NavLink, Switch,
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-
+import LandingPage from './landing-page/landing-page';
+import Nav from './navbar';
 import JsonTutorial from './jsonTutorial';
 
-const App = (props) => {
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route path="/" component={JsonTutorial} />
-        </Switch>
-      </div>
-    </Router>
-  );
-};
-
-export default App;
+// eslint-disable-next-line react/prefer-stateless-function
+export default class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={JsonTutorial} />
+            <Route path="/home" component={LandingPage} />
+            <Route render={() => (<div>post not found </div>)} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
+}
