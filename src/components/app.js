@@ -1,9 +1,10 @@
-import '../style.scss';
+import '../styles.scss';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 import React from 'react';
-import LandingPage from './components/landing-page';
+import LandingPage from './landing-page/landing-page';
+import Nav from './navbar';
 
 export default class App extends React.Component {
   render() {
@@ -12,7 +13,7 @@ export default class App extends React.Component {
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/home" component={LandingPage} />
             <Route render={() => (<div>post not found </div>)} />
           </Switch>
         </div>

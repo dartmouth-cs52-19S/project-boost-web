@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import * as firebase from 'firebase';
 import reducers from './reducers';
 import App from './components/app';
-import './style.scss';
+import './styles.scss';
 
 // this creates the store with the reducers, and does some other stuff to initialize devtools
 // boilerplate to copy, don't have to know
