@@ -1,14 +1,73 @@
 body, html {
-    font-family: "Roboto", sans-serif;
+    font-family: "Raleway", sans-serif;
     height: 100%;
+    background-color: #BCC4C7;
+}
+
+img {
+    padding: 0px 100px; 
+}
+
+h2 {
+    font-size: 25px; 
+    color: #388CAB;
+    font-weight: bold; 
+    padding: 0px 100px; 
+}
+
+h3 {
+    font-size: 20px; 
+    color: #293C44;
+    font-weight: 400; 
+    padding: 0px 100px; 
+}
+
+a {
+    font-size: 25px;
+    color: #293C44;
+    font-weight: lighter; 
+}
+
+#step {
+    font-size: 25px;
+    color: #293C44;
+    font-weight: bold;
+    text-align: center;
+}
+
+.button_container {
+
+    display: flex;
+    justify-content: flex-end;
 }
 
 .doneJSON {
     background-color: #388CAB;
+    font-size: 20px; 
+    font-weight: lighter; 
+    padding: 10px 40px;
     color: #FEFEFE;
-
+    bottom: 30px; 
+    right: 10px; 
+    position: absolute;
+    margin: 0px 50px 0px 50px; 
+    border-radius: 3px;
+    text-align: right;
 }
 
-.active {
-    color: pink;
+.doneJSON:hover {
+    background-color: #293C44;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.doneJSON:focus {
+    outline: none;
+}
+
+#JSON_File_Title {
+    text-align: center;
+    color: #293C44;
+    font-size: 50px; 
+    font-weight: bold;
 }
