@@ -1,6 +1,6 @@
 // import React from 'react';
 import React, { Component } from 'react';
-import '../style.scss';
+import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 
@@ -60,21 +60,22 @@ export default class JsonTutorial extends Component {
         <h2><span id="step">Step 5:</span> Click on &quot;Create Archive&quot;.</h2>
         <h2><span id="step">Step 6:</span> When You Receive Your Email, Open the Link and Download the File.</h2>
         <h2><span id="step">Step 7:</span></h2>
-        <div className="button_container">
+        <div className="dropzone_container">
           <span>
             <Dropzone onDrop={acceptedFiles => this.handleFile(acceptedFiles)}>
               {({ getRootProps, getInputProps }) => (
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    <p>Drag and drop some files here, or click to select files</p>
+                    <p className="dropzone">Drag and drop some files here, or click to select files</p>
                   </div>
                 </section>
               )}
             </Dropzone>
           </span>
-          <button type="submit" onClick={e => this.handleUpload(e)} className="doneJSON">Done</button>
+
         </div>
+        <button type="submit" onClick={e => this.handleUpload(e)} className="doneJSON">Done</button>
       </div>
     );
   }
