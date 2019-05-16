@@ -7,21 +7,22 @@ import {
 import LandingPage from './landing-page/landing-page';
 import Nav from './navbar';
 import JsonTutorial from './json-tutorial/jsonTutorial';
+import Instructions from './instructions/instructions';
 
-// eslint-disable-next-line react/prefer-stateless-function
-export default class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <Nav />
-          <Switch>
-            <Route exact path="/tutorial" component={JsonTutorial} />
-            <Route path="/home" component={LandingPage} />
-            <Route render={() => (<div>post not found </div>)} />
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/tutorial" component={JsonTutorial} />
+          <Route exact path="/instructions" component={Instructions} />
+          <Route render={() => (<div>page not found </div>)} />
+        </Switch>
+      </div>
+    </Router>
+  );
+};
+
+export default App;

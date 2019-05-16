@@ -1,25 +1,4 @@
-import firebase from 'firebase';
-
-// set the configuration for the app
-const config = {
-  apiKey: 'AIzaSyDCEnVqd_S6_Ra7o4FelYKeeCN4iq_fwpE',
-  authDomain: 'cs52-lab3-d6145.firebaseapp.com',
-  databaseURL: 'https://cs52-lab3-d6145.firebaseio.com',
-  projectId: 'cs52-lab3-d6145',
-  storageBucket: 'cs52-lab3-d6145.appspot.com',
-  messagingSenderId: '611703282057',
-};
-
-firebase.initializeApp(config);
-const database = firebase.database();
-
-// get all notes in the database
-function fetchNotes(callback) {
-  database.ref('notes').on('value', (snapshot) => {
-    const newNoteState = snapshot.val();
-    callback(newNoteState);
-  });
-}
+import * as firebase from 'firebase';
 
 // adopted from: https://firebase.google.com/docs/auth/web/google-signin
 function signInWithGoogle() {
@@ -32,7 +11,6 @@ function signInWithGoogle() {
     });
   });
 }
-
 
 function getCurrentUser() {
   return firebase.auth().currentUser;

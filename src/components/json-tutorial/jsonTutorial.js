@@ -1,51 +1,39 @@
-// import React from 'react';
 import React, { Component } from 'react';
 import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
-import axios from 'axios';
 
-const LOCAL_URL = 'http://localhost:9090/api';
+const LOCAL_URL = 'http://localhost:9090/api/uploadGoogleLocationData';
 
 export default class JsonTutorial extends Component {
   constructor(props) {
     super(props);
-    this.state = { file: null };
-    this.handleFile = this.handleFile.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
+    this.state = {
+      file: null,
+    };
   }
 
-
-  // https://www.mokuji.me/article/drop-upload-tutorial-3
-  // https://www.youtube.com/watch?v=0TTa5Ulmgds
-
-
-  handleFile(files) {
-    console.log('at handleFile');
-    console.log(files);
-    const file = files[0];
-    this.setState({ file });
-  }
-
-  handleUpload(e) {
-    e.preventDefault();
-    console.log('at handleUpload');
-    const { file } = this.state;
-    const formdata = new FormData();
-    formdata.append('theFile', file);
-    console.log(formdata);
-    axios({
-      url: LOCAL_URL,
-      method: 'POST',
-      data: formdata,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    }).then((res) => {
-      console.log('we are zooming - we did not get an error');
-    }, (err) => {
-      console.log('Upload file error:');
-      console.log(err);
+  handleFile = (files) => {
+    this.setState({
+      file: files[0],
     });
+  }
+
+  handleUpload = (e) => {
+    const formData = new FormData();
+    formData.append('file', this.state.file);
+
+    const request = new XMLHttpRequest();
+
+    request.onload = () => {
+      if (request.response !== undefined) {
+        console.log(request.response);
+        this.props.history.push('/instructions');
+      }
+    };
+
+    request.open('POST', LOCAL_URL, true);
+    request.responseType = 'json';
+    request.send(formData);
   }
 
   render() {
@@ -67,7 +55,7 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    <p className="dropzone">Drag and drop some files here, or click to select files</p>
+                    {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
                   </div>
                 </section>
               )}
