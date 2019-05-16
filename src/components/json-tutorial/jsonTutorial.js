@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
 
-const LOCAL_URL = 'http://localhost:9090/api/uploadGoogleLocationData';
+// const URL = 'http://localhost:9090/api/uploadGoogleLocationData';
+const URL = 'https://project-boost.herokuapp.com/api/uploadGoogleLocationData';
 
 export default class JsonTutorial extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class JsonTutorial extends Component {
       }
     };
 
-    request.open('POST', LOCAL_URL, true);
+    request.open('POST', URL, true);
     request.responseType = 'json';
     request.send(formData);
   }
