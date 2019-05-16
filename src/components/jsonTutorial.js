@@ -1,15 +1,51 @@
 // import React from 'react';
 import React, { Component } from 'react';
 import '../style.scss';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import UploadScreen from '../img/Drag_and_Drop_to_Upload.png';
-import uploadJSON from '../actions';
+import Dropzone from 'react-dropzone';
+import axios from 'axios';
+
+const LOCAL_URL = 'http://localhost:9090/api';
+
+export default class JsonTutorial extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { file: null };
+    this.handleFile = this.handleFile.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+  }
 
 
-class JsonTutorial extends Component {
-  onUploadClick = () => {
-    this.props.uploadFile();
+  // https://www.mokuji.me/article/drop-upload-tutorial-3
+  // https://www.youtube.com/watch?v=0TTa5Ulmgds
+
+
+  handleFile(files) {
+    console.log('at handleFile');
+    console.log(files);
+    const file = files[0];
+    this.setState({ file });
+  }
+
+  handleUpload(e) {
+    e.preventDefault();
+    console.log('at handleUpload');
+    const { file } = this.state;
+    const formdata = new FormData();
+    formdata.append('theFile', file);
+    console.log(formdata);
+    axios({
+      url: LOCAL_URL,
+      method: 'POST',
+      data: formdata,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }).then((res) => {
+      console.log('we are zooming - we did not get an error');
+    }, (err) => {
+      console.log('Upload file error:');
+      console.log(err);
+    });
   }
 
   render() {
@@ -24,12 +60,22 @@ class JsonTutorial extends Component {
         <h2><span id="step">Step 5:</span> Click on &quot;Create Archive&quot;.</h2>
         <h2><span id="step">Step 6:</span> When You Receive Your Email, Open the Link and Download the File.</h2>
         <h2><span id="step">Step 7:</span></h2>
-        <img onClick={this.onUploadClick} className="UploadIMG" src={UploadScreen} alt="" />
         <div className="button_container">
-          <button type="submit" className="doneJSON">Done</button>
+          <span>
+            <Dropzone onDrop={acceptedFiles => this.handleFile(acceptedFiles)}>
+              {({ getRootProps, getInputProps }) => (
+                <section>
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <p>Drag and drop some files here, or click to select files</p>
+                  </div>
+                </section>
+              )}
+            </Dropzone>
+          </span>
+          <button type="submit" onClick={e => this.handleUpload(e)} className="doneJSON">Done</button>
         </div>
       </div>
     );
   }
 }
-export default withRouter(connect(null, { uploadJSON })(JsonTutorial));
