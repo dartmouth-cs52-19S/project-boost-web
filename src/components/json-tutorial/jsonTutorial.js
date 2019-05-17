@@ -10,6 +10,7 @@ export default class JsonTutorial extends Component {
     super(props);
     this.state = {
       file: null,
+      loading: false,
     };
   }
 
@@ -28,6 +29,9 @@ export default class JsonTutorial extends Component {
     request.onload = () => {
       if (request.response !== undefined) {
         console.log(request.response);
+        this.setState({
+          loading: false,
+        });
         this.props.history.push('/instructions');
       }
     };
@@ -35,6 +39,10 @@ export default class JsonTutorial extends Component {
     request.open('POST', URL, true);
     request.responseType = 'json';
     request.send(formData);
+
+    this.setState({
+      loading: true,
+    });
   }
 
   render() {
@@ -57,6 +65,7 @@ export default class JsonTutorial extends Component {
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
                     {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
+                    {this.state.loading ? <p>Loading...</p> : null}
                   </div>
                 </section>
               )}
