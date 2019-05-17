@@ -35,10 +35,10 @@ a {
     text-align: center;
 }
 
-.button_container {
+.dropzone_container {
 
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .doneJSON {
@@ -47,10 +47,8 @@ a {
     font-weight: lighter; 
     padding: 10px 40px;
     color: #FEFEFE;
-    bottom: 30px; 
-    right: 10px; 
-    position: absolute;
-    margin: 0px 50px 0px 50px; 
+
+    margin: 0px 50px 50px 100px; 
     border-radius: 3px;
     text-align: right;
 }
@@ -70,4 +68,24 @@ a {
     color: #293C44;
     font-size: 50px; 
     font-weight: bold;
+}
+
+// dropzone
+
+.dropzone{
+    text-align: center;
+    border : 1px solid #293C44;
+    color:#388CAB;
+    background-color: #FEFEFE; 
+    padding: 40px 30px;
+   
+}
+
+.dropzone:focus {
+    outline: none;
+}
+
+.dropzone:hover {
+    cursor: pointer;
+    outline: none;
 }
