@@ -29,7 +29,6 @@ function signOut() {
   });
 }
 
-
 export {
   getCurrentUser, signInWithGoogle, signOut,
 };
