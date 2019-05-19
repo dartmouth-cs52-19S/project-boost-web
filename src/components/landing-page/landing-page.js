@@ -7,22 +7,22 @@ import * as db from '../../services/datastore';
 export default class LandingPage extends React.Component {
   constructor(props) {
     super(props);
-
-    if (firebase.auth().currentUser) {
-      this.props.history.push('/tutorial');
-    }
+    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
   }
 
-  signInUser = () => {
-    db.signInWithGoogle().then((result) => {
+  // re-route user to tutorial or home page when auth state changes
+  onAuthStateChanged = (user) => {
+    if (user) {
       this.props.history.push('/tutorial');
-    });
+    } else {
+      this.props.history.push('/');
+    }
   }
 
   render() {
     return (
       <div id="home">
-        <img src={require('../../assets/google-signin.png')} alt="Google Sign In" onClick={this.signInUser} />
+        <img src={require('../../assets/google-signin.png')} alt="Google Sign In" onClick={db.signInWithGoogle} />
       </div>
     );
   }

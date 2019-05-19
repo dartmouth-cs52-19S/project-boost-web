@@ -1,13 +1,14 @@
 import '../styles.scss';
 import React from 'react';
-import * as firebase from 'firebase';
+import { NavLink } from 'react-router-dom';
+import * as db from '../services/datastore';
 
-const Nav = () => {
+const Nav = (props) => {
   return (
     <nav>
-      <h1>BOOST</h1>
+      <NavLink to="/">BOOST</NavLink>
       <div id="logout">
-        {firebase.auth().currentUser ? <h2>Logout</h2> : null}
+        {props.user ? <h2 onClick={db.signOut}>Logout</h2> : null}
       </div>
     </nav>
   );
