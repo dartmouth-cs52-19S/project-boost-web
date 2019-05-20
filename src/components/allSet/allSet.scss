@@ -1,54 +1,30 @@
-nav {
-    background-color: #388CAB; 
-    a {
-        color: #e5e5e5; 
-        padding: 30px 30px; 
+#all-set {
+    background-color: #BCC4C7;
+
+    #image-text-container {
+        display: flex;
     }
-    h2 {
-        color: #e5e5e5;
-        font-size: 30px; 
-        padding: 20px 50px; 
+    
+    #text {
+        margin-right: 60px;
+
+        h1 {
+            padding-top: 80px;
+            margin: 0; 
+            font-size: 90px; 
+            color: #388CAB;
+        
+        }
+        h2 {
+            padding: 0;
+            margin: 0; 
+            font-size: 60px; 
+            color: #293C44;
+        }
     }
-}
-
-.imageAndText{
-    display: flex;
-}
-
-.allSetPage {
-    background-color: #388CAB;
-}
-
-.imageAndText {
-    display: flex;
-}
-
-
-text {
-    display: flex; 
-    h1 {
-        padding-top: 80px;
+    img {
+        padding: 0; 
         margin: 0; 
-        font-size: 90px; 
-        color: #E5e5e5;
     
     }
-    h2 {
-        padding: 0;
-        margin: 0; 
-        font-size: 60px; 
-        color: #293C44;
-    }
 }
-
-
-img {
-    padding: 0; 
-    margin: 0; 
-
-}
-
-
-
-
-

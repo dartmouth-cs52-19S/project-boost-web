@@ -40,15 +40,13 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
-          <Nav user={this.state.user} />
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/tutorial" component={JsonTutorial} />
-            <Route exact path="/allSet" component={allSet} />
-            <Route render={() => (<div>page not found </div>)} />
-          </Switch>
-        </div>
+        <Nav user={this.state.user} />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/tutorial" component={JsonTutorial} />
+          <Route exact path="/all-set" component={allSet} />
+          <Route render={() => (<div>page not found </div>)} />
+        </Switch>
       </Router>
     );
   }
