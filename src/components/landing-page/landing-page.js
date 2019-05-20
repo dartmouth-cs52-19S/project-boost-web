@@ -10,6 +10,8 @@ export default class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
+
+    document.body.style.backgroundColor = '#388CAB';
   }
 
   // re-route user to tutorial or home page when auth state changes
