@@ -1,109 +1,90 @@
-body, html {
-    font-family: "Raleway", sans-serif;
-    height: 100%;
+#whole-page {
     background-color: #BCC4C7;
-}
+    padding-top: 30px;
 
-nav {
-    background-color: #BCC4C7; 
-    a {
-        color: #293C44; 
-        padding: 30px 30px; 
+    h1 {
+        margin: 0; 
     }
+    
     h2 {
-        color: #293C44;
-        font-weight: 100; 
-        padding: 10px 50px; 
+        font-size: 25px; 
+        color: #388CAB;
+        font-weight: bold; 
+        padding: 0px 100px; 
     }
-
-}
-
-.whole-page {
-    background-color: #BCC4C7;
-}
-
-h1 {
-    margin: 0; 
-}
-
-h2 {
-    font-size: 25px; 
-    color: #388CAB;
-    font-weight: bold; 
-    padding: 0px 100px; 
-}
-
-h3 {
-    font-size: 20px; 
-    color: #293C44;
-    font-weight: 400; 
-    padding: 0px 100px; 
-}
-
-a {
-    font-size: 25px;
-    color: #293C44;
-    font-weight: lighter; 
-}
-
-#step {
-    font-size: 25px;
-    color: #293C44;
-    font-weight: bold;
-    text-align: center;
-}
-
-.dropzone_container {
-
-    display: flex;
-    justify-content: center;
-}
-
-.doneJSON {
-    background-color: #388CAB;
-    font-size: 20px; 
-    font-weight: lighter; 
-    padding: 10px 40px;
-    color: #FEFEFE;
-
-    margin: 0px 50px 50px 100px; 
-    border-radius: 3px;
-    text-align: right;
-}
-
-.doneJSON:hover {
-    background-color: #293C44;
-    font-weight: bolder;
-    cursor: pointer;
-}
-
-.doneJSON:focus {
-    outline: none;
-}
-
-#JSON_File_Title {
-    text-align: center;
-    color: #293C44;
-    font-size: 50px; 
-    font-weight: bold;
-}
-
-// dropzone
-
-.dropzone{
-    text-align: center;
-    border : 1px solid #293C44;
-    color:#388CAB;
-    background-color: #FEFEFE; 
-    padding: 40px 30px;
-   
-}
-
-.dropzone:focus {
-    outline: none;
-}
-
-.dropzone:hover {
-    cursor: pointer;
-    outline: none;
+    
+    h3 {
+        font-size: 20px; 
+        color: #293C44;
+        font-weight: 400; 
+        padding: 0px 100px; 
+    }
+    
+    a {
+        font-size: 25px;
+        color: #293C44;
+        font-weight: lighter; 
+    }
+    
+    #step {
+        font-size: 25px;
+        color: #293C44;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .dropzone_container {
+    
+        display: flex;
+        justify-content: center;
+    }
+    
+    .doneJSON {
+        background-color: #388CAB;
+        font-size: 20px; 
+        font-weight: lighter; 
+        padding: 10px 40px;
+        color: #FEFEFE;
+    
+        margin: 0px 50px 50px 100px; 
+        border-radius: 3px;
+        text-align: right;
+    }
+    
+    .doneJSON:hover {
+        background-color: #293C44;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+    
+    .doneJSON:focus {
+        outline: none;
+    }
+    
+    #JSON_File_Title {
+        text-align: center;
+        color: #293C44;
+        font-size: 50px; 
+        font-weight: bold;
+    }
+    
+    // dropzone
+    
+    .dropzone{
+        text-align: center;
+        border : 1px solid #293C44;
+        color:#388CAB;
+        background-color: #FEFEFE; 
+        padding: 40px 30px;
+       
+    }
+    
+    .dropzone:focus {
+        outline: none;
+    }
+    
+    .dropzone:hover {
+        cursor: pointer;
+        outline: none;
+    }
 }

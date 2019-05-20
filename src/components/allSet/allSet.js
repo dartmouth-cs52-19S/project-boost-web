@@ -4,10 +4,10 @@ import lady from '../../assets/closeUpWoman.png';
 
 const Instructions = () => {
   return (
-    <div className="allSetPage">
-      <div className="imageAndText">
+    <div id="all-set">
+      <div id="image-text-container">
         <img src={lady} alt="lady" />
-        <div className="text">
+        <div id="text">
           <h1>You&apos;re All Set</h1>
           <h2>Look up Boost on the App Store and Download Our App </h2>
         </div>
