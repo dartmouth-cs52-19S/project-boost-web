@@ -32,7 +32,7 @@ export default class JsonTutorial extends Component {
         this.setState({
           loading: false,
         });
-        this.props.history.push('/instructions');
+        this.props.history.push('/allSet');
       }
     };
 
@@ -47,9 +47,9 @@ export default class JsonTutorial extends Component {
 
   render() {
     return (
-      <div className="whole-page">
+      <div id="whole-page">
         <h1 id="JSON_File_Title">Upload Your JSON File</h1>
-        <h2><span id="step">Step 1:</span> Go to <a href="https://takeout.google.com/settings/takeout?pli=1">Google Takeout</a></h2>
+        <h2><span id="step">Step 1:</span> Go to <a href="https://takeout.google.com/settings/takeout?pli=1" target="_blank" rel="noopener noreferrer">Google Takeout</a></h2>
         <h2><span id="step">Step 2:</span> Sign In</h2>
         <h2><span id="step">Step 3:</span> In  &quot;Select Data to Include&quot; only Select Location History.</h2>
         <h3>If you don&apos;t have Location History - don&apos;t worry! Hit Done and Download Our App!</h3>
@@ -64,8 +64,8 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
                     {this.state.loading ? <p>Loading...</p> : null}
+                    {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
                   </div>
                 </section>
               )}
