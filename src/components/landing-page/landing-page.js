@@ -36,11 +36,10 @@ export default class LandingPage extends React.Component {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
         <div id="background">
-          <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+          <svg viewBox="0 0 350 350" preserveAspectRatio="xMinYMin meet">
             <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" />
           </svg>
         </div>
