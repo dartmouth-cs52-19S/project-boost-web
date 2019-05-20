@@ -1,7 +1,30 @@
 #landing-page {
     height: 100vh;
     width: 100vw;
-    background-color: #293C44;
+    background-color: #388CAB;
+    overflow: hidden;
+
+    #wave-image {
+        background-size: cover;
+        position: fixed;
+        bottom:0px;
+        height: 50%;
+        width: 100%;
+        padding-top: 40%;
+    }
+    
+    // #background {
+        
+    //     svg {
+    //         position: absolute;
+    //         left: 0;
+    //         top: 0;
+    //     }
+        
+    //     path {
+    //         fill:#388CAB;
+    //     }
+    // }
 
     #content {
         position: absolute;
@@ -59,18 +82,6 @@
         
     }
 
-    #background {
-        svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-        
-        path {
-            fill:#388CAB;
-        }
-    }
 }
 
 @media only screen and (min-width: 650px) {
