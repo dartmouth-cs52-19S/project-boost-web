@@ -1,26 +1,23 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import * as firebase from 'firebase';
-import reducers from './reducers';
-import App from './components/app';
 import './styles.scss';
-
-// this creates the store with the reducers, and does some other stuff to initialize devtools
-// boilerplate to copy, don't have to know
-const store = createStore(reducers, {}, compose(
-  applyMiddleware(),
-  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
-));
+import {
+  BrowserRouter as Router, Route, Switch,
+} from 'react-router-dom';
+import * as firebase from 'firebase';
+import LandingPage from './components/landing-page/landing-page';
+import Nav from './components/navbar';
+import JsonTutorial from './components/json-tutorial/jsonTutorial';
+import allSet from './components/allSet/allSet';
 
 const FireBaseConfig = {
-  apiKey: process.env.firebase_apiKey,
-  authDomain: process.env.firebase_authDomain,
-  databaseURL: process.env.firebase_databaseURL,
-  projectId: process.env.firebase_projectId,
-  storageBucket: process.env.firebase_storageBucket,
-  messagingSenderId: process.env.firebase_messagingSenderId,
+  apiKey: 'AIzaSyDmkIPJ33yx3Bh7OXCPGF7Li51iom96wfg',
+  authDomain: 'boost-240320.firebaseapp.com',
+  databaseURL: 'https://boost-240320.firebaseio.com',
+  projectId: 'boost-240320',
+  storageBucket: 'boost-240320.appspot.com',
+  messagingSenderId: '911387247122',
 };
 
 // initialize firebase
@@ -28,10 +25,34 @@ if (!firebase.apps.length) {
   firebase.initializeApp(FireBaseConfig);
 }
 
-// we now wrap App in a Provider
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: null,
+    };
+
+    // set user state when auth state changes so navbar re-renders
+    firebase.auth().onAuthStateChanged((user) => { this.setState({ user }); });
+  }
+
+  render() {
+    return (
+      <Router>
+        <Nav user={this.state.user} />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/tutorial" component={JsonTutorial} />
+          <Route exact path="/all-set" component={allSet} />
+          <Route render={() => (<div>page not found </div>)} />
+        </Switch>
+      </Router>
+    );
+  }
+}
+
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById('main'),
 );
