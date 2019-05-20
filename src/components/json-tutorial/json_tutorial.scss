@@ -4,8 +4,29 @@ body, html {
     background-color: #BCC4C7;
 }
 
+nav {
+    background-color: #BCC4C7; 
+    a {
+        color: #293C44; 
+        padding: 30px 30px; 
+    }
+    h2 {
+        color: #293C44;
+        font-weight: 100; 
+        padding: 10px 50px; 
+    }
+
+}
+
+.whole-page {
+    background-color: #BCC4C7;
+}
+
 img {
     padding: 0px 100px; 
+}
+h1 {
+    margin: 0; 
 }
 
 h2 {

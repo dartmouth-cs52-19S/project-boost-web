@@ -21,8 +21,22 @@ export default class LandingPage extends React.Component {
 
   render() {
     return (
-      <div id="home">
-        <img src={require('../../assets/google-signin.png')} alt="Google Sign In" onClick={db.signInWithGoogle} />
+      <div>
+        <div id="home">
+          <div id="content">
+            <h1>Helping You Boost Your Productivity</h1>
+            <h2>We&apos;ll Help You Plan Your Day So You Can Reach Your Goals</h2>
+            <div id="login-container">
+              <h3>Get Started</h3>
+              <img src={require('../../assets/google-signin.png')} alt="Google Sign In" onClick={db.signInWithGoogle} />
+            </div>
+          </div>
+        </div>
+        <div id="background">
+          <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+            <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" />
+          </svg>
+        </div>
       </div>
     );
   }
