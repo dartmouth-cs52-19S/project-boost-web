@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 import LandingPage from './components/landing-page/landing-page';
 import Nav from './components/navbar';
 import JsonTutorial from './components/json-tutorial/jsonTutorial';
-import Instructions from './components/instructions/instructions';
+import allSet from './components/allSet/allSet';
 
 const FireBaseConfig = {
   apiKey: 'AIzaSyDmkIPJ33yx3Bh7OXCPGF7Li51iom96wfg',
@@ -45,7 +45,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/tutorial" component={JsonTutorial} />
-            <Route exact path="/instructions" component={Instructions} />
+            <Route exact path="/allSet" component={allSet} />
             <Route render={() => (<div>page not found </div>)} />
           </Switch>
         </div>

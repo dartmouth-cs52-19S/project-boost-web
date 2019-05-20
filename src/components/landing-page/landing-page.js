@@ -2,6 +2,7 @@ import './landing-page.scss';
 import React from 'react';
 import * as firebase from 'firebase';
 import * as db from '../../services/datastore';
+import woman from '../../assets/woman.png';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class LandingPage extends React.Component {
@@ -24,12 +25,18 @@ export default class LandingPage extends React.Component {
       <div>
         <div id="home">
           <div id="content">
-            <h1>Helping You Boost Your Productivity</h1>
-            <h2>We&apos;ll Help You Plan Your Day So You Can Reach Your Goals</h2>
-            <div id="login-container">
-              <h3>Get Started</h3>
-              <img src={require('../../assets/google-signin.png')} alt="Google Sign In" onClick={db.signInWithGoogle} />
+            <div className="imageAndText">
+              <img src={woman} alt="lady" />
+              <div className="text">
+                <h1>Helping You Boost Your Productivity</h1>
+                <h2>We&apos;ll Help You Plan Your Day So You Can Reach Your Goals</h2>
+                <div id="login-container">
+                  <h3>Get Started</h3>
+                  <img src={require('../../assets/google-signin.png')} alt="Google Sign In" onClick={db.signInWithGoogle} />
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
         <div id="background">

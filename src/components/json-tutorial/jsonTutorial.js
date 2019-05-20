@@ -32,7 +32,7 @@ export default class JsonTutorial extends Component {
         this.setState({
           loading: false,
         });
-        this.props.history.push('/instructions');
+        this.props.history.push('/allSet');
       }
     };
 
