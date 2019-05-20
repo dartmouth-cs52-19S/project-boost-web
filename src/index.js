@@ -44,7 +44,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/tutorial" component={JsonTutorial} />
-          <Route exact path="/allSet" component={allSet} />
+          <Route exact path="/all-set" component={allSet} />
           <Route render={() => (<div>page not found </div>)} />
         </Switch>
       </Router>
