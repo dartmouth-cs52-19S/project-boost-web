@@ -2,20 +2,22 @@ body, html {
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #BCC4C7;
+    background-color: #388CAB;
 }
 
 nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    color: #293C44;
 
     a {
-        color: #293C44;
+        color: #FFF;
         margin-left: 20px;
         margin-top: 18px;
         font-size: 25px;
         font-weight: lighter; 
+        text-decoration: none;
     }
     h2 {
         color: #293C44;
@@ -26,9 +28,8 @@ nav {
 
 }
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 700px) {
     body, html {
         height: 100%;
-        overflow: hidden;
     }
 }
