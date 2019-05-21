@@ -1,11 +1,14 @@
 import * as firebase from 'firebase';
+import * as api from './api-requests';
 
 // adopted from: https://firebase.google.com/docs/auth/web/google-signin
 function signInWithGoogle() {
   return new Promise((resolve, reject) => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
-      resolve(firebase.auth().currentUser);
+      api.getUserInfo(firebase.auth().currentUser.uid).then((userData) => {
+        resolve(userData);
+      });
     }).catch((error) => {
       reject(error);
     });

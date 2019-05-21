@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
+import * as firebase from 'firebase';
 
 // const URL = 'http://localhost:9090/api/uploadGoogleLocationData';
 const URL = 'https://project-boost.herokuapp.com/api/uploadGoogleLocationData';
@@ -25,6 +26,7 @@ export default class JsonTutorial extends Component {
   handleUpload = (e) => {
     const formData = new FormData();
     formData.append('file', this.state.file);
+    formData.append('uid', firebase.auth().currentUser.uid);
 
     const request = new XMLHttpRequest();
 
