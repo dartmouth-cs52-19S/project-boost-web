@@ -1,8 +1,7 @@
 #landing-page {
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
-    background-color: #388CAB;
-
+    
     #wave-image {
         background-size: cover;
         position: fixed;
@@ -11,19 +10,6 @@
         width: 100%;
         padding-top: 40%;
     }
-    
-    // #background {
-        
-    //     svg {
-    //         position: absolute;
-    //         left: 0;
-    //         top: 0;
-    //     }
-        
-    //     path {
-    //         fill:#388CAB;
-    //     }
-    // }
 
     #content {
         position: absolute;
@@ -35,8 +21,8 @@
             justify-content: space-around;
 
             #text {
-                margin: 20px;
                 margin-right: 40px;
+                margin-top: 8vh;
             }
         }
     
@@ -45,7 +31,7 @@
             padding: 10px;
             min-width: 250px;
             max-width: 600px;
-            width: 50vw;
+            width: 25vw;
             margin-left: auto;
             margin-right: auto;
             margin-top: 25px;
@@ -72,7 +58,7 @@
         h2 {
             color: #e5e5e5;
             padding: 20px;
-            font-size: 20px; 
+            font-size: 26px; 
         }
 
         .text {
@@ -83,7 +69,7 @@
 
 }
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 700px) {
     #image-text-container {
         flex-direction: row;
     }
@@ -95,7 +81,7 @@
     }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 700px) {
     #image-text-container {
         flex-direction: column;
     }

@@ -12,6 +12,8 @@ export default class JsonTutorial extends Component {
       file: null,
       loading: false,
     };
+
+    document.body.style.backgroundColor = '#BCC4C7';
   }
 
   handleFile = (files) => {
@@ -64,7 +66,7 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {this.state.loading ? <p>Loading...</p> : null}
+                    {this.state.loading ? <p id="loading">Loading...</p> : null}
                     {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
                   </div>
                 </section>

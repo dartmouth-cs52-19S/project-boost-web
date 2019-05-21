@@ -34,9 +34,12 @@
     }
     
     .dropzone_container {
-    
         display: flex;
         justify-content: center;
+
+        #loading {
+            text-align: center;
+        }
     }
     
     .doneJSON {
