@@ -64,15 +64,13 @@
         outline: none;
     }
     
-    #JSON_File_Title {
+    #json-file-text {
         text-align: center;
         color: #293C44;
         font-size: 50px; 
         font-weight: bold;
     }
-    
-    // dropzone
-    
+        
     .dropzone{
         text-align: center;
         border : 1px solid #293C44;
@@ -95,11 +93,11 @@
         display: flex;
         justify-content: center; 
     }
+    
     #loading-GIF {
         width: auto;
         max-width: 150px;
         height: auto;
         max-height: 100px;
-
     }
 }

@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
-// import * as firebase from 'firebase';
-import loading from '../../assets/loading.gif';
-
-// const URL = 'http://localhost:9090/api/uploadGoogleLocationData';
-// const URL = 'https://project-boost.herokuapp.com/api/uploadGoogleLocationData';
+import * as firebase from 'firebase';
+import * as api from '../../services/api-requests';
+import loadingGIF from '../../assets/loading.gif';
 
 export default class JsonTutorial extends Component {
   constructor(props) {
     super(props);
     this.state = {
       file: null,
-      clickButton: false,
+      loading: false,
     };
 
     document.body.style.backgroundColor = '#BCC4C7';
@@ -24,42 +22,37 @@ export default class JsonTutorial extends Component {
     });
   }
 
-  handleUploadTest = (e) => {
-    console.log('at handle upload test');
-    this.setState({ clickButton: true });
-    setTimeout(() => this.setState({ clickButton: false }), 6000);
+  handleUpload = () => {
+    this.setState({
+      loading: true,
+    }, () => {
+      api.uploadInitialData(this.state.file, firebase.auth().currentUser.uid)
+        .then((response) => {
+          this.setState({
+            loading: false,
+          });
+          this.props.history.push('/all-set');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
   }
 
-  // handleUpload = (e) => {
-  //   const formData = new FormData();
-  //   formData.append('file', this.state.file);
-  //   formData.append('uid', firebase.auth().currentUser.uid);
-
-  //   const request = new XMLHttpRequest();
-
-  //   request.onload = () => {
-  //     if (request.response !== undefined) {
-  //       console.log(request.response);
-  //       this.setState({
-  //         loading: false,
-  //       });
-  //       this.props.history.push('/all-set');
-  //     }
-  //   };
-
-  //   request.open('POST', URL, true);
-  //   request.responseType = 'json';
-  //   request.send(formData);
-
-  //   this.setState({
-  //     loading: true,
-  //   });
-  // }
+  renderFileArea = () => {
+    if (!this.state.loading) {
+      if (this.state.file) {
+        return <p className="dropzone">{this.state.file.path}</p>;
+      } else {
+        return <p className="dropzone">Drag and drop some files here, or click to select files</p>;
+      }
+    } else return null;
+  }
 
   render() {
     return (
       <div id="whole-page">
-        <h1 id="JSON_File_Title">Upload Your JSON File</h1>
+        <h1 id="json-file-text">Upload Your JSON File</h1>
         <h2><span id="step">Step 1:</span> Go to <a href="https://takeout.google.com/settings/takeout?pli=1" target="_blank" rel="noopener noreferrer">Google Takeout</a></h2>
         <h2><span id="step">Step 2:</span> Sign In</h2>
         <h2><span id="step">Step 3:</span> In  &quot;Select Data to Include&quot; only Select Location History.</h2>
@@ -75,8 +68,8 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
-                    {this.state.clickButton ? <div id="loading-container"><img id="loading-GIF" src={loading} alt="Loading..." /></div> : null}
+                    {this.renderFileArea()}
+                    {this.state.loading ? <div id="loading-container"><img id="loading-GIF" src={loadingGIF} alt="Loading..." /></div> : null}
                   </div>
                 </section>
               )}
@@ -84,8 +77,7 @@ export default class JsonTutorial extends Component {
           </span>
 
         </div>
-        <button type="submit" onClick={e => this.handleUploadTest(e)} className="doneJSON">Test</button>
-        {/* <button type="submit" onClick={e => this.handleUpload(e)} className="doneJSON">Done</button> */}
+        { !this.state.loading ? <button type="submit" onClick={this.handleUpload} className="doneJSON">Done</button> : null}
       </div>
     );
   }
