@@ -3,14 +3,14 @@ import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
 import * as firebase from 'firebase';
 import * as api from '../../services/api-requests';
-import loading from '../../assets/loading.gif';
+import loadingGIF from '../../assets/loading.gif';
 
 export default class JsonTutorial extends Component {
   constructor(props) {
     super(props);
     this.state = {
       file: null,
-      clickButton: false,
+      loading: false,
     };
 
     document.body.style.backgroundColor = '#BCC4C7';
@@ -22,14 +22,14 @@ export default class JsonTutorial extends Component {
     });
   }
 
-  handleUpload = (e) => {
+  handleUpload = () => {
     this.setState({
-      clickButton: true
+      loading: true,
     }, () => {
-       api.uploadInitialData(this.state.file, firebase.auth().currentUser.uid)
+      api.uploadInitialData(this.state.file, firebase.auth().currentUser.uid)
         .then((response) => {
           this.setState({
-            clickButton: false,
+            loading: false,
           });
           this.props.history.push('/all-set');
         })
@@ -39,10 +39,20 @@ export default class JsonTutorial extends Component {
     });
   }
 
+  renderFileArea = () => {
+    if (!this.state.loading) {
+      if (this.state.file) {
+        return <p className="dropzone">{this.state.file.path}</p>;
+      } else {
+        return <p className="dropzone">Drag and drop some files here, or click to select files</p>;
+      }
+    } else return null;
+  }
+
   render() {
     return (
       <div id="whole-page">
-        <h1 id="JSON_File_Title">Upload Your JSON File</h1>
+        <h1 id="json-file-text">Upload Your JSON File</h1>
         <h2><span id="step">Step 1:</span> Go to <a href="https://takeout.google.com/settings/takeout?pli=1" target="_blank" rel="noopener noreferrer">Google Takeout</a></h2>
         <h2><span id="step">Step 2:</span> Sign In</h2>
         <h2><span id="step">Step 3:</span> In  &quot;Select Data to Include&quot; only Select Location History.</h2>
@@ -58,8 +68,8 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {this.state.clickButton ? <div><img src={loading} alt="Loading..." /></div> : null}
-                    {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
+                    {this.renderFileArea()}
+                    {this.state.loading ? <div id="loading-container"><img id="loading-GIF" src={loadingGIF} alt="Loading..." /></div> : null}
                   </div>
                 </section>
               )}
@@ -67,7 +77,7 @@ export default class JsonTutorial extends Component {
           </span>
 
         </div>
-        <button type="submit" onClick={e => this.handleUpload(e)} className="doneJSON">Done</button>
+        { !this.state.loading ? <button type="submit" onClick={this.handleUpload} className="doneJSON">Done</button> : null}
       </div>
     );
   }
