@@ -17,4 +17,26 @@ const getUserInfo = (id) => {
   });
 };
 
-export { getUserInfo };
+const uploadInitialData = (file, uid) => {
+  return new Promise((resolve, reject) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('uid', uid);
+
+    const request = new XMLHttpRequest();
+
+    request.onload = () => {
+      if (request.response !== undefined) {
+        resolve(request.response);
+      } else {
+        reject(new Error('Didn\'t get a response'));
+      }
+    };
+
+    request.open('POST', `${API_URL}/uploadGoogleLocationData`, true);
+    request.responseType = 'json';
+    request.send(formData);
+  });
+};
+
+export { getUserInfo, uploadInitialData };
