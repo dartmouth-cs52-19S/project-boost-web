@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
+import * as firebase from 'firebase';
 
 // const URL = 'http://localhost:9090/api/uploadGoogleLocationData';
 const URL = 'https://project-boost.herokuapp.com/api/uploadGoogleLocationData';
@@ -12,6 +13,8 @@ export default class JsonTutorial extends Component {
       file: null,
       loading: false,
     };
+
+    document.body.style.backgroundColor = '#BCC4C7';
   }
 
   handleFile = (files) => {
@@ -23,6 +26,7 @@ export default class JsonTutorial extends Component {
   handleUpload = (e) => {
     const formData = new FormData();
     formData.append('file', this.state.file);
+    formData.append('uid', firebase.auth().currentUser.uid);
 
     const request = new XMLHttpRequest();
 
@@ -32,7 +36,7 @@ export default class JsonTutorial extends Component {
         this.setState({
           loading: false,
         });
-        this.props.history.push('/allSet');
+        this.props.history.push('/all-set');
       }
     };
 
@@ -64,7 +68,7 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {this.state.loading ? <p>Loading...</p> : null}
+                    {this.state.loading ? <p id="loading">Loading...</p> : null}
                     {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
                   </div>
                 </section>
