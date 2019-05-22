@@ -75,8 +75,8 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {this.state.clickButton ? <div><img src={loading} alt="Loading..." /></div> : null}
                     {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
+                    {this.state.clickButton ? <div id="loading-container"><img id="loading-GIF" src={loading} alt="Loading..." /></div> : null}
                   </div>
                 </section>
               )}

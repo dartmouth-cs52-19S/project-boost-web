@@ -90,4 +90,16 @@
         cursor: pointer;
         outline: none;
     }
+
+    #loading-container {
+        display: flex;
+        justify-content: center; 
+    }
+    #loading-GIF {
+        width: auto;
+        max-width: 150px;
+        height: auto;
+        max-height: 100px;
+
+    }
 }
