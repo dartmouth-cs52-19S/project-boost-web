@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import './json_tutorial.scss';
 import Dropzone from 'react-dropzone';
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
+import loading from '../../assets/loading.gif';
 
 // const URL = 'http://localhost:9090/api/uploadGoogleLocationData';
-const URL = 'https://project-boost.herokuapp.com/api/uploadGoogleLocationData';
+// const URL = 'https://project-boost.herokuapp.com/api/uploadGoogleLocationData';
 
 export default class JsonTutorial extends Component {
   constructor(props) {
     super(props);
     this.state = {
       file: null,
-      loading: false,
+      clickButton: false,
     };
 
     document.body.style.backgroundColor = '#BCC4C7';
@@ -23,31 +24,37 @@ export default class JsonTutorial extends Component {
     });
   }
 
-  handleUpload = (e) => {
-    const formData = new FormData();
-    formData.append('file', this.state.file);
-    formData.append('uid', firebase.auth().currentUser.uid);
-
-    const request = new XMLHttpRequest();
-
-    request.onload = () => {
-      if (request.response !== undefined) {
-        console.log(request.response);
-        this.setState({
-          loading: false,
-        });
-        this.props.history.push('/all-set');
-      }
-    };
-
-    request.open('POST', URL, true);
-    request.responseType = 'json';
-    request.send(formData);
-
-    this.setState({
-      loading: true,
-    });
+  handleUploadTest = (e) => {
+    console.log('at handle upload test');
+    this.setState({ clickButton: true });
+    setTimeout(() => this.setState({ clickButton: false }), 6000);
   }
+
+  // handleUpload = (e) => {
+  //   const formData = new FormData();
+  //   formData.append('file', this.state.file);
+  //   formData.append('uid', firebase.auth().currentUser.uid);
+
+  //   const request = new XMLHttpRequest();
+
+  //   request.onload = () => {
+  //     if (request.response !== undefined) {
+  //       console.log(request.response);
+  //       this.setState({
+  //         loading: false,
+  //       });
+  //       this.props.history.push('/all-set');
+  //     }
+  //   };
+
+  //   request.open('POST', URL, true);
+  //   request.responseType = 'json';
+  //   request.send(formData);
+
+  //   this.setState({
+  //     loading: true,
+  //   });
+  // }
 
   render() {
     return (
@@ -68,7 +75,7 @@ export default class JsonTutorial extends Component {
                 <section>
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {this.state.loading ? <p id="loading">Loading...</p> : null}
+                    {this.state.clickButton ? <div><img src={loading} alt="Loading..." /></div> : null}
                     {this.state.file ? <p className="dropzone">{this.state.file.path}</p> : <p className="dropzone">Drag and drop some files here, or click to select files</p>}
                   </div>
                 </section>
@@ -77,7 +84,8 @@ export default class JsonTutorial extends Component {
           </span>
 
         </div>
-        <button type="submit" onClick={e => this.handleUpload(e)} className="doneJSON">Done</button>
+        <button type="submit" onClick={e => this.handleUploadTest(e)} className="doneJSON">Test</button>
+        {/* <button type="submit" onClick={e => this.handleUpload(e)} className="doneJSON">Done</button> */}
       </div>
     );
   }
