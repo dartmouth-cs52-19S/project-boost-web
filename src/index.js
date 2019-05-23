@@ -3,9 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles.scss';
 import {
-  BrowserRouter as Router, Route,
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import { AnimatedSwitch } from 'react-router-transition';
 
 import * as firebase from 'firebase';
 import LandingPage from './components/landing-page/landing-page';
@@ -43,17 +42,12 @@ class App extends React.Component {
     return (
       <Router>
         <Nav user={this.state.user} />
-        <AnimatedSwitch
-          atEnter={{ opacity: 0 }}
-          atLeave={{ opacity: 0 }}
-          atActive={{ opacity: 1 }}
-          className="switch-wrapper"
-        >
+        <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/tutorial" component={JsonTutorial} />
           <Route exact path="/all-set" component={allSet} />
           <Route render={() => (<div>page not found </div>)} />
-        </AnimatedSwitch>
+        </Switch>
       </Router>
     );
   }
