@@ -31,7 +31,7 @@ export default class JsonTutorial extends Component {
           this.setState({
             loading: false,
           });
-          this.props.history.push('/all-set'); // /all-set
+          this.props.history.push('/all-set');
         })
         .catch((error) => {
           console.error(error);
