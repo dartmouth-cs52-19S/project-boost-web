@@ -131,7 +131,7 @@ For deploying to TestFlight, please consult the Expo docs.
 ## Authors
 
 Thomas Monfre, '21
-Robert He, '20
+Robert He, '19
 Faustino Cortina, '21
 Varsha Iyer, '21
 Syed Tanveer, '21
