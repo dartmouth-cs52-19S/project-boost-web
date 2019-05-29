@@ -69,7 +69,7 @@ export default class JsonTutorial extends Component {
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
                     {this.renderFileArea()}
-                    {this.state.loading ? <div id="loading-container"><img id="loading-GIF" src={loadingGIF} alt="Loading..." /></div> : null}
+                    {this.state.loading ? <div id="loading-container"><div id="loader-text">Please Wait for Us to Parse Your Data...</div><img id="loading-GIF" src={loadingGIF} alt="Loading..." /></div> : null}
                   </div>
                 </section>
               )}
