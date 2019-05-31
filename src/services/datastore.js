@@ -6,17 +6,20 @@ function signInWithGoogle() {
   return new Promise((resolve, reject) => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
-      api.getUserInfo(firebase.auth().currentUser.uid).then((userData) => {
-        resolve(userData);
-      });
+      firebase.auth().currentUser.getIdToken(true)
+        .then((idToken) => {
+          api.getUserInfo(idToken).then((userData) => {
+            resolve(userData);
+          }).catch((error) => {
+            reject(error);
+          });
+        }).catch((error) => {
+          reject(error);
+        });
     }).catch((error) => {
       reject(error);
     });
   });
-}
-
-function getCurrentUser() {
-  return firebase.auth().currentUser;
 }
 
 // promise syntax adapted from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
@@ -33,5 +36,5 @@ function signOut() {
 }
 
 export {
-  getCurrentUser, signInWithGoogle, signOut,
+  signInWithGoogle, signOut,
 };
