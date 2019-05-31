@@ -26,17 +26,23 @@ export default class JsonTutorial extends Component {
     this.setState({
       loading: true,
     }, () => {
-      api.uploadInitialData(this.state.file, firebase.auth().currentUser.uid)
-        .then((response) => {
-          this.setState({
-            loading: false,
-          });
-          this.props.history.push('/all-set');
-        })
-        .catch((error) => {
-          console.error(error);
+      firebase.auth().currentUser.getIdToken(true)
+        .then((idToken) => {
+          api.uploadInitialData(this.state.file, idToken)
+            .then((response) => {
+              this.setState({
+                loading: false,
+              });
+              this.props.history.push('/all-set');
+            })
+            .catch((error) => {
+              console.error(error.message);
+            });
         });
-    });
+    })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
   renderFileArea = () => {
@@ -69,7 +75,12 @@ export default class JsonTutorial extends Component {
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
                     {this.renderFileArea()}
-                    {this.state.loading ? <div id="loading-container"><div id="loader-text">Please Wait for Us to Parse Your Data...</div><img id="loading-GIF" src={loadingGIF} alt="Loading..." /></div> : null}
+                    {this.state.loading ? (
+                      <div id="loading-container">
+                        <div id="loader-text">Please Wait for Us to Parse Your Data...</div>
+                        <img id="loading-GIF" src={loadingGIF} alt="Loading..." />
+                      </div>
+                    ) : null}
                   </div>
                 </section>
               )}

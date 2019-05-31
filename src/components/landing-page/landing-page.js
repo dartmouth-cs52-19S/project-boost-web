@@ -44,11 +44,3 @@ export default class LandingPage extends React.Component {
     );
   }
 }
-
-/*
-        <div id="background">
-          <svg viewBox="0 0 300 500">
-            <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" />
-          </svg>
-        </div>
-*/

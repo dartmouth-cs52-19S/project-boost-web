@@ -1,13 +1,11 @@
-/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 
 const API_URL = 'https://project-boost.herokuapp.com/api';
-// const API_URL = 'http://localhost:9090/api';
 
-const getUserInfo = (id) => {
+const getUserInfo = (idToken) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`${API_URL}/getAuth`, { userID: id })
+      .post(`${API_URL}/getAuth`, { userID: idToken })
       .then((response) => {
         resolve(response.data);
       })
@@ -17,11 +15,11 @@ const getUserInfo = (id) => {
   });
 };
 
-const uploadInitialData = (file, uid) => {
+const uploadInitialData = (file, idToken) => {
   return new Promise((resolve, reject) => {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('uid', uid);
+    formData.append('uid', idToken);
 
     const request = new XMLHttpRequest();
 
