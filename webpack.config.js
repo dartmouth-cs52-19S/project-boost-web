@@ -53,7 +53,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              useRelativePath: true,
+              useRelativePath: false,
               name: '[name].[ext]',
             },
           },
