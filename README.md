@@ -14,11 +14,10 @@ https://www.figma.com/file/YOd5zqcyhMSz66wYNJ39lh3w/Boost-CS52-19S?node-id=1%3A6
 ```
 ├──[project-boost-web]/       # root directory
 |  └──[src]                   # holds all of the source code for the website
-|     └──[assets]               # manages Swift/Xcode dependencies
-|     └──[components]               # manages Swift/Xcode dependencies'
-|     └──[services]               # manages Swift/Xcode dependencies
-|     └──[Podfile]               # manages Swift/Xcode dependencies
-|     └──[index.js]               # manages Swift/Xcode dependencies
+|     └──[assets]             # all of the images that are rendered 
+|     └──[components]         # code for every screen that a user will go through
+|     └──[services]           # has files that include all routes we use with firebase and signin/logout
+|     └──[index.js]           # root file that react accesses to render website
 ```
 
 ## 🛠️ Installation
@@ -37,7 +36,7 @@ https://www.figma.com/file/YOd5zqcyhMSz66wYNJ39lh3w/Boost-CS52-19S?node-id=1%3A6
 
 - `cd` into root directory
 - `yarn start`
-- navigate to [localhost:8080](localhost:8080) i order to see the website
+- navigate to [localhost:8080](localhost:8080) in order to see the website
 
 ## 🚀 Deployment
 
